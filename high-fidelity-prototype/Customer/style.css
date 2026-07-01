@@ -14,14 +14,14 @@ header {
     padding-bottom: 2rem;
     margin: 0;
     text-align: center;
-}
 
-header a {
-    color: white;
+    a {
+        color: white;
     text-decoration: none;
     width: 100%;
     font-size: 3rem;
     padding: 0.5rem;
+    }
 }
 
 h1 {
@@ -32,14 +32,25 @@ h1 {
 }
 
 h2 {
-    font-size: 1.5em;
+    font-size: 2.5em;
     text-align: center;
+    width: 100%;
 }
 
 h3 {
-    font-size: 2.5em;
+    font-size: 1.5em;
     text-align: center;
-    text-decoration: underline;
+    border-bottom: 2px solid black;
+    padding-bottom: 1rem;
+    width: 100%;
+}
+
+h4 {
+    font-size: 1.2em;
+    text-align: center;
+    padding-bottom: 0.5rem;
+    width: 100%;
+    margin: 0;
 }
 
 a {
@@ -54,6 +65,10 @@ form {
     justify-self: center;
     align-items: center;
     gap: 1rem;
+}
+
+p {
+    margin: 0;
 }
 
 .main-nav {
@@ -91,6 +106,12 @@ form {
     grid-template-columns: repeat(auto-fill, minmax(300px, 300px));
     grid-gap: 40px;
     justify-content: center;
+
+    h2 {
+        font-size: 2rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
 }
 
 .card {
@@ -204,8 +225,10 @@ button:hover {
 .column-description {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    justify-self: center;
     gap: 0;
-    width: auto;
+    width: 50%;
 }
 
 .column-description p {
@@ -234,7 +257,7 @@ button:hover {
     flex-direction: column;
     gap: 0;
     width: 20%;
-    justify-content: center;
+    justify-self: center;
     margin-top: 10px;
     margin-bottom: 20px;
 
@@ -312,4 +335,3 @@ textarea:focus {
     width: 20%;
     margin-bottom: 1rem;
 }
-
