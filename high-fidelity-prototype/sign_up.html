@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <ul class="main-nav">
+            <a href="customer_profile.html">Profile</a>
+            <a href="customer_login.html">Login</a>
+            <a href="sign_up.html">Sign Up</a>
+        </ul>
+
+        <header>
+            <a href="browse.html">HomeFix Now</a>
+        </header>
+    </nav>
+
+    <div class="container">
+        <div class="new-profile-form">
+            <h3>Create a New Profile</h3>
+            <form action="submit-profile.php" method="POST">
+                <div class="enter-name">
+                    <label for="name">User Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="enter-email">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="enter-password">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <div class="enter-image">
+                    <label for="image">Profile Image URL:</label>
+                    <input type="url" id="image" name="image" required>
+                </div>
+
+                <div class="create-button">
+                    <button type="submit">Create</button>
+                </div>
+
+                <div class="provider-signup">
+                    <p>Are you a Tradesman?  <a href="provider/provider_sign_up.html">Sign Up as a Provider</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+<footer>
+
+</footer>
+
+</html>
