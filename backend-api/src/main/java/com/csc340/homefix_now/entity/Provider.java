@@ -4,6 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Provider {
@@ -19,6 +23,9 @@ public class Provider {
     private String specialty;
     private String bio;
     private String location;
+
+    @OneToMany(mappedBy = "provider", cascade = CascadeType.ALL)
+private List<HomeService> services = new ArrayList<>();
 
     // constructor
     public Provider() {
@@ -111,4 +118,12 @@ public class Provider {
     public void setLocation(String location) {
         this.location = location;
     }
+
+    public List<HomeService> getServices() {
+    return services;
+}
+
+public void setServices(List<HomeService> services) {
+    this.services = services;
+}
 }
