@@ -21,6 +21,8 @@ public class Customer {
     private String phone;
     private String bio;
     private String location;
+    private String bookings;
+    private String reviews;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<HomeService> services = new ArrayList<>();
@@ -29,13 +31,16 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String firstName, String lastName, String email, String phone, String bio, String location) {
+    public Customer(String firstName, String lastName, String email, String phone, String bio, 
+        String location, String bookings, String reviews) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.bio = bio;
         this.location = location;
+        this.bookings = bookings;
+        this.reviews = reviews;
     }
 
     // Getters and Setters
@@ -93,6 +98,22 @@ public class Customer {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(String bookings) {
+        this.bookings = bookings;
+    }
+
+    public String getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(String reviews) {
+        this.reviews = reviews;
     }
 }
 
