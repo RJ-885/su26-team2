@@ -9,6 +9,9 @@ import com.csc340.homefix_now.entity.Review;
 
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Long> {
-   List<Review> findByCustomerId(Long customerId);
-   List<Review> findByProviderId(Long providerId); 
+
+    List<Review> findByServiceServiceId(Long serviceId);
+
+    List<Review> findByServiceProviderProviderId(Long providerId);
+
 }
