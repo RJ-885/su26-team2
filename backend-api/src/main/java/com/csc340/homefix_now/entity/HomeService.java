@@ -1,6 +1,10 @@
 package com.csc340.homefix_now.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class HomeService {
@@ -13,9 +17,10 @@ public class HomeService {
     private String description;
     private Double price;
 
-    @ManyToOne
-    @JoinColumn(name = "provider_id")
-    private Provider provider;
+@ManyToOne
+@JoinColumn(name = "provider_id")
+@JsonIgnoreProperties("services")
+private Provider provider;
 
     // Default constructor
     public HomeService() {
