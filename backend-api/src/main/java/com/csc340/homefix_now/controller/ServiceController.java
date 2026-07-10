@@ -29,11 +29,13 @@ public class ServiceController {
         return serviceService.getService(id);
     }
 
-    // POST create a new service
-    @PostMapping
-    public HomeService createService(@RequestBody HomeService service) {
-        return serviceService.createService(service);
-    }
+   @PostMapping("/provider/{providerId}")
+public HomeService createService(
+        @PathVariable Long providerId,
+        @RequestBody HomeService service) {
+
+    return serviceService.createService(providerId, service);
+}
 
     // PUT update a service
     @PutMapping("/{id}")
