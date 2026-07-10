@@ -1,15 +1,16 @@
 package com.csc340.homefix_now.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import jakarta.persistence.CascadeType;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "customers")
+@Data
+@AllArgsConstructor
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

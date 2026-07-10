@@ -16,6 +16,14 @@ public class BookingService {
         this.bookingRepository = bookingRepository;
     }
 
+    public List<Booking> getBookingsByCustomerId(Long customerId) {
+        return bookingRepository.findByCustomerId(customerId);
+    }
+
+    public List<Booking> getBookingsByHomeServiceId(Long homeServiceId) {
+        return bookingRepository.findByHomeServiceId(homeServiceId);
+    }
+
     public Booking createBooking(Booking booking) {
         return bookingRepository.save(booking);
     }
@@ -26,5 +34,30 @@ public class BookingService {
 
     public Booking getBookingById(Long bookingId) {
         return bookingRepository.findById(bookingId).orElse(null);
+    }
+
+    public Booking updateBooking(Booking booking) {
+        Booking existingBooking = bookingRepository.findById(booking.getBookingId()).orElse(null);
+        if (existingBooking != null) {
+            existingBooking.setCustomer(booking.getCustomer());
+            existingBooking.setHomeService(booking.getHomeService());
+            existingBooking.setLocation(booking.getLocation());
+            //existingBooking.setTimeslot(booking.getTimeslot());
+            existingBooking.setStatus(booking.getStatus());
+        }
+        return bookingRepository.save(booking);
+    }
+
+    public void deleteBooking(Long bookingId) {
+        bookingRepository.deleteById(bookingId);
+    }
+
+    public Booking cancelBooking(Long bookingId) {
+        Booking existingBooking = bookingRepository.findById(bookingId).orElse(null);
+        if (existingBooking != null) {
+            existingBooking.setStatus("Cancelled");
+            return bookingRepository.save(existingBooking);
+        }
+        return null;
     }
 }
