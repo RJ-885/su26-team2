@@ -15,14 +15,13 @@ public class BookingService {
     public BookingService(BookingRepository bookingRepository) {
         this.bookingRepository = bookingRepository;
     }
+public List<Booking> getBookingsByCustomerId(Long customerId) {
+    return bookingRepository.findByCustomerCustomerId(customerId);
+}
 
-    public List<Booking> getBookingsByCustomerId(Long customerId) {
-        return bookingRepository.findByCustomerId(customerId);
-    }
-
-    public List<Booking> getBookingsByHomeServiceId(Long homeServiceId) {
-        return bookingRepository.findByHomeServiceId(homeServiceId);
-    }
+public List<Booking> getBookingsByHomeServiceId(Long homeServiceId) {
+    return bookingRepository.findByHomeServiceServiceId(homeServiceId);
+}
 
     public Booking createBooking(Booking booking) {
         return bookingRepository.save(booking);

@@ -9,8 +9,12 @@ import com.csc340.homefix_now.entity.Booking;
 
 @Repository
 public interface BookingRepository extends JpaRepository<Booking, Long> {
-    Booking findByCustomerIdAndHomeServiceId(Long customerId, Long availibilityId);
+
+    Booking findByCustomerCustomerIdAndHomeServiceServiceId(Long customerId, Long serviceId);
+
     List<Booking> findByBookingId(Long bookingId);
-    List<Booking> findByCustomerId(Long customerId);
-    List<Booking> findByHomeServiceId(Long homeServiceId);
+
+    List<Booking> findByCustomerCustomerId(Long customerId);
+
+    List<Booking> findByHomeServiceServiceId(Long serviceId);
 }
