@@ -16,17 +16,17 @@ public class TimeslotService {
         this.timeslotRepository = timeslotRepository;
     }
 
-    public List<Timeslot> getAvailableTimeslotsByProviderId(Long providerId) {
-        return timeslotRepository.findAvailableByProvider(providerId);
-    }
+  public List<Timeslot> getAvailableTimeslotsByProviderId(Long providerId) {
+    return timeslotRepository.findByProviderProviderIdAndIsAvailableTrue(providerId);
+}
 
     public Timeslot getTimeslotById(Long timeslotId) {
         return timeslotRepository.findById(timeslotId).orElse(null);
     }
 
-    public List<Timeslot> getTimeslotsByProviderId(Long providerId) {
-        return timeslotRepository.findByProviderId(providerId);
-    }
+   public List<Timeslot> getTimeslotsByProviderId(Long providerId) {
+    return timeslotRepository.findByProviderProviderId(providerId);
+}
 
     public Timeslot createTimeslot(Timeslot timeslot) {
         return timeslotRepository.save(timeslot);
