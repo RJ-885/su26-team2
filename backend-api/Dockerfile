@@ -1,14 +1,18 @@
-# Use Eclipse Temurin JDK 24
-FROM eclipse-temurin:24-jdk
+FROM eclipse-temurin:24-jdk AS build
 
-# Directory
 WORKDIR /app
 
-# Copy the JAR file into the container
-COPY target/*.jar app.jar
+COPY . .
 
-# Spring Boot port
+RUN chmod +x mvnw
+RUN ./mvnw clean package -DskipTests
+
+FROM eclipse-temurin:24-jdk
+
+WORKDIR /app
+
+COPY --from=build /app/target/*.jar app.jar
+
 EXPOSE 8080
 
-# Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
