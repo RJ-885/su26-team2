@@ -25,9 +25,7 @@ public class Customer {
     private String bookings;
     private String reviews;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    private List<HomeService> services = new ArrayList<>();
-
+    
     // Constructors
     public Customer() {
     }
