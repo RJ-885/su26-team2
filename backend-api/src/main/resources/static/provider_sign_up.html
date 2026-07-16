@@ -26,7 +26,7 @@
 
         <h2>Create Provider Account</h2>
 
-        <form action="submit-provider.php" method="POST">
+        <form id="providerForm">
 
             <label for="firstName">First Name</label>
             <input type="text" id="firstName" name="firstName" required>
@@ -43,13 +43,17 @@
             <label for="phone">Phone Number</label>
             <input type="tel" id="phone" name="phone" required>
 
-            <label for="service">Service Category</label>
-            <select id="service" name="service" required>
-                <option value="">Select a service</option>
-                <option value="electrical">Electrical</option>
-                <option value="plumbing">Plumbing</option>
-                <option value="roofing">Roofing</option>
-                <option value="masonry">Masonry</option>
+            <label for="specialty">Profession</label>
+
+            <select id="specialty" name="specialty" required>
+                <option value="">Select a profession</option>
+                <option value="Electrical">Electrical</option>
+                <option value="Plumbing">Plumbing</option>
+                <option value="Roofing">Roofing</option>
+                <option value="Masonry">Masonry</option>
+            </select>
+
+
             </select>
 
             <label for="experience">Years of Experience</label>
@@ -73,4 +77,49 @@
             <button type="submit">Create Provider Account</button>
         </form>
     </div>
+
+    <script>
+        document.getElementById("providerForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const provider = {
+                firstName: document.getElementById("firstName").value,
+                lastName: document.getElementById("lastName").value,
+                businessName: document.getElementById("businessName").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("phone").value,
+                specialty: document.getElementById("specialty").value,
+                bio: document.getElementById("bio").value,
+                location: document.getElementById("location").value
+            };
+
+            try {
+                const response = await fetch("/api/providers", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(provider)
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to create provider.");
+                }
+
+                const createdProvider = await response.json();
+
+                alert("Provider account created successfully!");
+
+                // Save the logged-in provider ID
+                sessionStorage.setItem("providerId", createdProvider.providerId);
+
+                // Go to the profile page
+                window.location.href = "provider_profile.html";
+                
+            } catch (error) {
+                console.error(error);
+                alert("Unable to create provider account.");
+            }
+        });
+    </script>
 </body>
