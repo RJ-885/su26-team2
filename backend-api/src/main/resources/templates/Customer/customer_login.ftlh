@@ -5,20 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Login</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
 
     <nav>
         <ul class="main-nav">
-            <a href="customer_profile.html">Profile</a>
-            <a href="customer_login.html">Login</a>
-            <a href="sign_up.html">Sign Up</a>
+            <a href="/customer_profile">Profile</a>
+            <a href="/customer_login">Login</a>
+            <a href="/sign_up">Sign Up</a>
         </ul>
 
         <header>
-            <a href="browse.html">HomeFix Now</a>
+            <a href="/providers">HomeFix Now</a>
         </header>
     </nav>
 
@@ -40,7 +40,7 @@
                     <button type="submit">Login</button>
                 </div>
                 <div class="sign-up-button">
-                    <a href="sign_up.html">Don't have an account? Sign Up</a>
+                    <a href="/sign_up">Don't have an account? Sign Up</a>
                 </div>
             </form>
         </div>

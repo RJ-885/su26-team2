@@ -31,6 +31,10 @@ public class ProviderService {
                 .orElseThrow(() -> new RuntimeException("Provider not found."));
     }
 
+    public Provider getProviderBySpecialty(String specialty) {
+        return providerRepository.findBySpecialty(specialty);
+    }
+
     /**
      * Create a provider.
      */

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Provider Profile</title>
 
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
@@ -14,13 +14,13 @@
     <nav>
 
         <ul class="main-nav">
-            <a href="provider_client_history.html">History</a>
-            <a href="provider_profile.html">Profile</a>
-            <a href="../browse.html">Logout</a>
+            <a href="/provider_client_history">History</a>
+            <a href="/provider_profile">Profile</a>
+            <a href="/browse">Logout</a>
         </ul>
 
         <header>
-            <a href="../browse.html">HomeFix Now</a>
+            <a href="/providers">HomeFix Now</a>
         </header>
 
     </nav>
@@ -45,22 +45,22 @@
 
                 <div class="info-item">
                     <strong>First Name</strong>
-                    <p>Thomas</p>
+                    <p>${provider.firstName}</p>
                 </div>
 
                 <div class="info-item">
                     <strong>Last Name</strong>
-                    <p>Anderson</p>
+                    <p>${provider.lastName}</p>
                 </div>
 
                 <div class="info-item">
                     <strong>Email</strong>
-                    <p>TommyAndy@email.com</p>
+                    <p>${provider.email}</p>
                 </div>
 
                 <div class="info-item">
                     <strong>Phone Number</strong>
-                    <p>(336) 555-1234</p>
+                    <p>${provider.phone}</p>
                 </div>
 
             </div>
@@ -79,7 +79,7 @@
                     <strong>Service Category</strong>
 
                     <span class="service-tag">
-                        Electrical
+                        ${provider.specialty}
                     </span>
                 </div>
 
@@ -90,9 +90,9 @@
                 </div>
 
                 <div class="info-item">
-                    <strong>Service Area</strong>
+                    <strong>Location</strong>
 
-                    <p>Greensboro, NC</p>
+                    <p>${provider.location}</p>
                 </div>
 
                 <div class="info-item">
@@ -105,8 +105,7 @@
                     <strong>About Me</strong>
 
                     <p>
-                        Licensed electrician specializing in residential electrical
-                        repairs, lighting installation, breaker panel upgrades, and emergency electrical services.
+                        ${provider.bio}
                     </p>
                 </div>
 
@@ -142,10 +141,7 @@
                     <strong>Services Offered</strong>
 
                     <ul class="services-list">
-                        <li>Electrical Repairs</li>
-                        <li>Lighting Installation</li>
-                        <li>Breaker Panel Installation</li>
-                        <li>Outlet Installation</li>
+                        
                     </ul>
 
                 </div>
