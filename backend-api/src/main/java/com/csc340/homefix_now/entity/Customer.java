@@ -3,9 +3,6 @@ package com.csc340.homefix_now.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import jakarta.persistence.CascadeType;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "customers")
@@ -18,12 +15,12 @@ public class Customer {
 
     private String firstName;
     private String lastName;
+    private String password;
+    private String role;
     private String email;
     private String phone;
     private String bio;
     private String location;
-    private String bookings;
-    private String reviews;
 
     
     // Constructors
@@ -31,15 +28,13 @@ public class Customer {
     }
 
     public Customer(String firstName, String lastName, String email, String phone, String bio, 
-        String location, String bookings, String reviews) {
+        String location) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.bio = bio;
         this.location = location;
-        this.bookings = bookings;
-        this.reviews = reviews;
     }
 
     // Getters and Setters
@@ -97,22 +92,6 @@ public class Customer {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public String getBookings() {
-        return bookings;
-    }
-
-    public void setBookings(String bookings) {
-        this.bookings = bookings;
-    }
-
-    public String getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(String reviews) {
-        this.reviews = reviews;
     }
 }
 

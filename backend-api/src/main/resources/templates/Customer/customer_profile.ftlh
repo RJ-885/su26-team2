@@ -5,20 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Profile</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
 
     <nav>
         <ul class="main-nav">
-            <a href="customer_profile.html">Profile</a>
-            <a href="customer_login.html">Login</a>
-            <a href="sign_up.html">Sign Up</a>
+            <a href="/customer_profile">Profile</a>
+            <a href="/customer_login">Login</a>
+            <a href="/sign_up">Sign Up</a>
         </ul>
 
         <header>
-            <a href="browse.html">HomeFix Now</a>
+            <a href="/providers">HomeFix Now</a>
         </header>
     </nav>
 
@@ -27,10 +27,10 @@
             <div class="row">
                 <div class="description-header">
                     <h2>
-                        User Name
+                        ${customer.firstName} ${customer.lastName}
                     </h2>
                 </div>
-                
+
                 <div class="column-image">
                     <img src="default.jpg" alt="Profile Image" />
                 </div>
@@ -40,24 +40,31 @@
                         About Me
                     </h3>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        ${customer.bio}
                     </p>
 
                     <h3>
                         Email
                     </h3>
                     <h4>
-                        user@email.com
+                        ${customer.email}
                     </h4>
 
                     <h3>
                         Phone Number
                     </h3>
                     <h4>
-                        123-456-7890
+                        ${customer.phone}
                     </h4>
+                </div>
+                <div class="profile-card">
+
+                    <h2>Account Settings</h2>
+
+                    <a href="customer_profile/edit/${customerId}"><button>Edit</button></a>
+
+                    <a href="customer_profile/delete/${customerId}"><button class="delete-btn">Delete Account</button></a>
+
                 </div>
             </div>
         </div>

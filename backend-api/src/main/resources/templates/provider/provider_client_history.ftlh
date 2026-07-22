@@ -14,13 +14,13 @@
     <nav>
 
         <ul class="main-nav">
-            <a href="provider/provider_history.html">History</a>
-            <a href="provider_profile.html">Profile</a>
-            <a href="../browse.html">Logout</a>
+            <a href="/provider/provider_history">History</a>
+            <a href="/provider_profile">Profile</a>
+            <a href="/browse">Logout</a>
         </ul>
 
         <header>
-            <a href="../browse.html">HomeFix Now</a>
+            <a href="/browse">HomeFix Now</a>
         </header>
 
     </nav>
