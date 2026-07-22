@@ -9,5 +9,5 @@ import com.csc340.homefix_now.entity.Provider;
 
 @Repository
 public interface ProviderRepository extends JpaRepository<Provider, Long> {
-    Provider findBySpecialty(String specialty);
+    List<Provider> findBySpecialty(String specialty);
 }
