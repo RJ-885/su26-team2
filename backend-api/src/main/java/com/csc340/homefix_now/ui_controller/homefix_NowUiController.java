@@ -17,10 +17,12 @@ import com.csc340.homefix_now.service.TimeslotService;
 
 import com.csc340.homefix_now.entity.Provider;
 import com.csc340.homefix_now.entity.Customer;
+import com.csc340.homefix_now.entity.Booking;
+import com.csc340.homefix_now.entity.Review;
 
 @Controller
 public class homefix_NowUiController {
-    
+
     private final BookingService bookingService;
     private final CustomerService customerService;
     private final ProviderService providerService;
@@ -29,21 +31,38 @@ public class homefix_NowUiController {
     private final ServiceService serviceService;
     private final TimeslotService timeslotService;
 
-    public homefix_NowUiController(BookingService bookingService, CustomerService customerService, 
-        ProviderService providerService, ReplyService replyService,
-        ReviewService reviewService, ServiceService serviceService, TimeslotService timeslotService) {
-            this.bookingService = bookingService;
-            this.customerService = customerService;
-            this.providerService = providerService;
-            this.replyService = replyService;
-            this.reviewService = reviewService;
-            this.serviceService = serviceService;
-            this.timeslotService = timeslotService;
+    public homefix_NowUiController(BookingService bookingService, CustomerService customerService,
+            ProviderService providerService, ReplyService replyService,
+            ReviewService reviewService, ServiceService serviceService, TimeslotService timeslotService) {
+        this.bookingService = bookingService;
+        this.customerService = customerService;
+        this.providerService = providerService;
+        this.replyService = replyService;
+        this.reviewService = reviewService;
+        this.serviceService = serviceService;
+        this.timeslotService = timeslotService;
     }
 
     @GetMapping("/sign_up")
     public String sign_up() {
         return "Customer/sign_up";
+    }
+
+    @GetMapping("/customer_profile/new")
+    public String createCustomerForm(Model model) {
+        model.addAttribute("customer", new Customer());
+        model.addAttribute("pageTitle", "Create New Customer");
+        return "Customer/sign_up";
+    }
+
+    @PostMapping("/sign_up/save")
+    public String createCustomer(Customer customer) {
+        Customer createdCustomer = customerService.createCustomer(customer);
+        if (createdCustomer != null) {
+            return "redirect:/customer_profile/" + createdCustomer.getCustomerId();
+        }
+
+        return "redirect:/customer_profile/new?error=true";
     }
 
     @GetMapping("/customer_login")
@@ -84,8 +103,37 @@ public class homefix_NowUiController {
 
     @PostMapping("/customer_profile/edit/{customerId}")
     public String updatePost(@PathVariable Long customerId, Customer updatedCustomer, MultipartFile thumbnailFile) {
-    customerService.updateCustomer(customerId, updatedCustomer);
+        customerService.updateCustomer(customerId, updatedCustomer);
+
+        return "redirect:/posts/" + customerId + "?error=true";
+    }
+
+    @GetMapping("providers/search")
+    public String searchProviders(String query, Model model) {
+        model.addAttribute("providersList", providerService.getProviderBySpecialty(query));
+        model.addAttribute("pageTitle", "Search Results for: " + query);
+
+        return "Customer/browse";
+    }
+
+    /**
+    @GetMapping("/review/new")
+    public String createReviewForm(Review review, Model model) {
+        model.addAttribute("review", new Review());
+        model.addAttribute("pageTitle", "Create New Review");
+
+        return
+    }
+    */
+    /**
+    @PostMapping("/booking/save")
+    public String makeNewBooking(Booking booking) {
+        Booking createdBooking = bookingService.createBooking(booking);
+        if (createdBooking != null) {
+            return "redirect:/providers/" + booking.getProvider().getProviderId();
+        }
+        return 
+    }
+    */
     
-    return "redirect:/posts/" + customerId + "?error=true";
-  }
 }

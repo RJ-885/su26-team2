@@ -3,9 +3,6 @@ package com.csc340.homefix_now.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "reviews")
@@ -20,6 +17,11 @@ public class Review {
 
     @Column(length = 1000)
     private String comment;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    @JsonIgnoreProperties("reviews")
+    private Customer customer;
 
     @ManyToOne
     @JoinColumn(name = "service_id", nullable = false)

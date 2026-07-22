@@ -18,10 +18,15 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookingId;
 
-    @ManyToOne
+    @OneToOne
     @JsonIgnoreProperties("")
     @JoinColumn(nullable = false)
     private Customer customer;
+
+    @OneToOne
+    @JsonIgnoreProperties("")
+    @JoinColumn(nullable = false)
+    private Provider provider;
 
     @ManyToOne
     @JsonIgnoreProperties("")
@@ -37,8 +42,9 @@ public class Booking {
     @JoinColumn(nullable = false)
     private Timeslot timeslot;
 
-    public Booking(Customer customer, HomeService homeService, Timeslot timeslot, String notes, String status, String location) {
+    public Booking(Customer customer, Provider provider, HomeService homeService, Timeslot timeslot, String notes, String status, String location) {
         this.customer = customer;
+        this.provider = provider;
         this.homeService = homeService;
         this.timeslot = timeslot;
         this.notes = notes;

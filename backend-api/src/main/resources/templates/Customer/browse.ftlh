@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Browse Page</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/../style.css">
 </head>
 
 <body>
@@ -25,15 +25,17 @@
     <!--This is for the Search Bar.-->
     <div class="search-section">
         <div class="search-container">
-            <input type="text" class="search-bar" placeholder="Search by Specialty">
-            <button>Search</button>
+            <form action="/providers/search" method="get">
+                <input type="search" class="search-bar" name="query" placeholder="Search by Specialty">
+                <button type="submit">Search</button>
+            </form>
         </div>
 
         <div class="filter-buttons">
-            <button class="button-outline">Electrical</button>
-            <button class="button-outline">Plumbing</button>
-            <button class="button-outline">Roofing</button>
-            <button class="button-outline">Masonry</button>
+            <a href="/providers/search"><button class="button-outline">Electrical</button></a>
+            <a href="/providers/search"><button class="button-outline">Plumbing</button></a>
+            <a href="/providers/search"><button class="button-outline">Roofing</button></a>
+            <a href="/providers/search"><button class="button-outline">Masonry</button></a>
         </div>
     </div>
 
