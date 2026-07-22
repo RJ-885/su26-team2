@@ -39,12 +39,11 @@
 
     <!--This is for the Profile Cards-->
     <div class="cards">
-            <#list providersList as provider>
+        <#list providersList as provider>
+            <a href="/providers/${provider.providerId?c}">
                 <article class="card">
                     <header>
-                        <a href="/providers/${provider.providerId?c}">
-                            <h2>${provider.firstName} ${provider.lastName}</h2>
-                        </a>
+                        <h2>${provider.firstName} ${provider.lastName}</h2>
                     </header>
 
                     <img src="default.jpg" alt="Profile Image" />
@@ -59,7 +58,8 @@
                         ${provider.specialty}
                     </footer>
                 </article>
-            </#list>
+            </a>
+        </#list>
     </div>
 </body>
 

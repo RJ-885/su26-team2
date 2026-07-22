@@ -79,6 +79,13 @@ public class homefix_NowUiController {
     public String deleteCustomer(@PathVariable Long customerId) {
         customerService.deleteCustomer(customerId);
 
-        return"redirect:/providers";
+        return "redirect:/providers";
     }
+
+    @PostMapping("/customer_profile/edit/{customerId}")
+    public String updatePost(@PathVariable Long customerId, Customer updatedCustomer, MultipartFile thumbnailFile) {
+    customerService.updateCustomer(customerId, updatedCustomer);
+    
+    return "redirect:/posts/" + customerId + "?error=true";
+  }
 }

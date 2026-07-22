@@ -17,7 +17,7 @@
         </ul>
 
         <header>
-            <a href="/browse">HomeFix Now</a>
+            <a href="/providers">HomeFix Now</a>
         </header>
     </nav>
 
@@ -38,11 +38,6 @@
                 <div class="enter-password">
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" required>
-                </div>
-
-                <div class="enter-image">
-                    <label for="image">Profile Image URL:</label>
-                    <input type="url" id="image" name="image" required>
                 </div>
 
                 <div class="create-button">

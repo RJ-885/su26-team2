@@ -33,7 +33,7 @@ public class Booking {
     private String location;
 
     @OneToOne
-    @JsonIgnoreProperties("provider")
+    @JsonIgnoreProperties("")
     @JoinColumn(nullable = false)
     private Timeslot timeslot;
 

@@ -61,10 +61,9 @@
 
                     <h2>Account Settings</h2>
 
-                    <button>Change Password</button>
+                    <a href="customer_profile/edit/${customerId}"><button>Edit</button></a>
 
-
-                    <button class="delete-btn">Delete Account</button>
+                    <a href="customer_profile/delete/${customerId}"><button class="delete-btn">Delete Account</button></a>
 
                 </div>
             </div>
