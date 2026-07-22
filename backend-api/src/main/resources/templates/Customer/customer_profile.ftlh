@@ -35,14 +35,19 @@
                     <img src="default.jpg" alt="Profile Image" />
                 </div>
                 <div class="column-description">
-
                     <h3>
                         About Me
                     </h3>
-                    <p>
-                        ${customer.bio}
-                    </p>
 
+                    <#if customer.bio??>
+                        <p>
+                            ${customer.bio}
+                        </p>
+                    <#else>
+                        <p>
+
+                        </p>
+                    </#if>
                     <h3>
                         Email
                     </h3>
@@ -53,9 +58,16 @@
                     <h3>
                         Phone Number
                     </h3>
-                    <h4>
-                        ${customer.phone}
-                    </h4>
+
+                    <#if customer.phone??>
+                        <h4>
+                            ${customer.phone}
+                        </h4>
+                    <#else>
+                        <h4>
+
+                        </h4>
+                    </#if>
                 </div>
                 <div class="profile-card">
 

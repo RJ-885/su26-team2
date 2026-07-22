@@ -24,26 +24,30 @@
     <div class="container">
         <div class="new-profile-form">
             <h3>Create a New Profile</h3>
-            <form action="/providers" method="POST">
+            <form action="/sign_up/save" method="post">
                 <div class="enter-name">
-                    <label for="name">User Name:</label>
-                    <input type="text" id="name" name="name" required>
+                    <label for="first_name">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+
+                <div class="enter-name">
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" required>
                 </div>
 
                 <div class="enter-email">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-
-                <div class="enter-password">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="text" id="email" name="email" required>
                 </div>
 
                 <div class="create-button">
                     <button type="submit">Create</button>
                 </div>
             </form>
+        </div>
+
+        <div>
+            <a href="provider/provider_sign_up">Sign us as a Provider</a>
         </div>
     </div>
 </body>

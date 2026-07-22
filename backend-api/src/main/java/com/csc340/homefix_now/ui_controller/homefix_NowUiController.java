@@ -83,7 +83,7 @@ public class homefix_NowUiController {
         Provider provider = providerService.getProvider(providerId);
         model.addAttribute("provider", provider);
 
-        return "provider/provider_profile";
+        return "Customer/customer_view_provider_profile";
     }
 
     @GetMapping("/providers")
@@ -94,24 +94,31 @@ public class homefix_NowUiController {
         return "Customer/browse";
     }
 
-    @GetMapping("customer_profile/delete/{customerId}")
+    @GetMapping("/delete/{customerId}")
     public String deleteCustomer(@PathVariable Long customerId) {
         customerService.deleteCustomer(customerId);
 
         return "redirect:/providers";
     }
 
-    @PostMapping("/customer_profile/edit/{customerId}")
+    /**
+    @GetMapping("/edit/{customerId}")
+    public String updateCustomerProfile(@PathVariable Long customerId, Customer customer, Model model) {
+        model.addAttribute("customer", customerService.updateCustomer(customerId, customer));
+    }
+    */
+
+    @PostMapping("/edit/{customerId}")
     public String updatePost(@PathVariable Long customerId, Customer updatedCustomer, MultipartFile thumbnailFile) {
         customerService.updateCustomer(customerId, updatedCustomer);
 
-        return "redirect:/posts/" + customerId + "?error=true";
+        return "redirect:/customer_profile/" + customerId;
     }
 
-    @GetMapping("providers/search")
-    public String searchProviders(String query, Model model) {
-        model.addAttribute("providersList", providerService.getProviderBySpecialty(query));
-        model.addAttribute("pageTitle", "Search Results for: " + query);
+    @GetMapping("providers/search/{specialty}")
+    public String searchProviders(@PathVariable String specialty, Model model) {
+        model.addAttribute("providersList", providerService.getProviderBySpecialty(specialty));
+        model.addAttribute("pageTitle", "Search Results for: " + specialty);
 
         return "Customer/browse";
     }

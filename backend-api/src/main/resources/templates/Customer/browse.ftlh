@@ -25,17 +25,17 @@
     <!--This is for the Search Bar.-->
     <div class="search-section">
         <div class="search-container">
-            <form action="/providers/search" method="get">
-                <input type="search" class="search-bar" name="query" placeholder="Search by Specialty">
+            <form action="/providers/search/{specialty}" method="get">
+                <input type="search" class="search-bar" id="specialty" name="specialty" placeholder="Search by Specialty">
                 <button type="submit">Search</button>
             </form>
         </div>
 
         <div class="filter-buttons">
-            <a href="/providers/search"><button class="button-outline">Electrical</button></a>
-            <a href="/providers/search"><button class="button-outline">Plumbing</button></a>
-            <a href="/providers/search"><button class="button-outline">Roofing</button></a>
-            <a href="/providers/search"><button class="button-outline">Masonry</button></a>
+            <a href="/providers/search/Electrical"><button class="button-outline">Electrical</button></a>
+            <a href="/providers/search/Plumbing"><button class="button-outline">Plumbing</button></a>
+            <a href="/providers/search/Roofing"><button class="button-outline">Roofing</button></a>
+            <a href="/providers/searchMasonry"><button class="button-outline">Masonry</button></a>
         </div>
     </div>
 
