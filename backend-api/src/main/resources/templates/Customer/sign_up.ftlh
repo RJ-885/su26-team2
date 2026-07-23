@@ -24,7 +24,7 @@
     <div class="container">
         <div class="new-profile-form">
             <h3>Create a New Profile</h3>
-            <form action="/sign_up/save" method="post">
+            <form action="/sign_up" method="post">
                 <div class="enter-name">
                     <label for="first_name">First Name:</label>
                     <input type="text" id="firstName" name="firstName" required>
@@ -40,8 +40,13 @@
                     <input type="text" id="email" name="email" required>
                 </div>
 
+                <div class="enter-password">
+                    <label for="password">Password:</label>
+                    <input type="text" id="password" name="password" required>
+                </div>
+
                 <div class="create-button">
-                    <button type="submit">Create</button>
+                    <a href="/sign_up"><button type="submit">Create</button></a>
                 </div>
             </form>
         </div>

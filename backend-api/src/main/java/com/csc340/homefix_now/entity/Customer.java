@@ -13,9 +13,18 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long customerId;
 
+    @Column(nullable = false)
     private String firstName;
+
+    @Column(nullable = false)
     private String lastName;
+
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
+    private String accountStatus;
+
     private String role;
     private String email;
     private String phone;
@@ -27,10 +36,12 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String firstName, String lastName, String email, String phone, String bio, 
+    public Customer(String firstName, String lastName, String password, String accountStatus, String email, String phone, String bio, 
         String location) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.password = password;
+        this.accountStatus = accountStatus;
         this.email = email;
         this.phone = phone;
         this.bio = bio;

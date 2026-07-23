@@ -18,7 +18,7 @@
         </ul>
 
         <header>
-            <a href="/providers">HomeFix Now</a>
+            <a href="/browse">HomeFix Now</a>
         </header>
     </nav>
 
