@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Profile</title>
+    <title>Browse Page</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
 
     <nav>
-        <ul class="main-nav">
+         <ul class="main-nav">
             <a href="/customer/bookings">Bookings</a>
             <a href="/customer/profile">Profile</a>
             <a href="/customer/customer_login">Login</a>
@@ -28,62 +28,57 @@
             <div class="row">
                 <div class="description-header">
                     <h2>
-                        ${customer.firstName} ${customer.lastName}
+                        ${booking.location}
                     </h2>
                 </div>
 
-                <div class="column-image">
-                    <img src="/default.jpg" alt="Profile Image" />
-                </div>
+                <img src="/house.jpg" alt="House Image">
+
                 <div class="column-description">
                     <h3>
-                        About Me
+                        ${booking.notes}
                     </h3>
 
-                    <#if customer.bio??>
+                    <#if booking.notes??>
                         <p>
-                            ${customer.bio}
+                            ${booking.notes}
                         </p>
-                    <#else>
-                        <p>
+                        <#else>
+                            <p>
 
-                        </p>
+                            </p>
                     </#if>
                     <h3>
-                        Email
+                        Status
                     </h3>
                     <h4>
-                        ${customer.email}
+                        ${booking.status}
                     </h4>
 
                     <h3>
-                        Phone Number
+                        Provider
                     </h3>
 
-                    <#if customer.phone??>
+                    <#if booking.provider??>
                         <h4>
-                            ${customer.phone}
+                            ${booking.provider}
                         </h4>
-                    <#else>
-                        <h4>
+                        <#else>
+                            <h4>
 
-                        </h4>
+                            </h4>
                     </#if>
-                </div>
-                <div class="profile-card">
 
-                    <h2>Account Settings</h2>
-
-                    <a href="/customer/profile/edit"><button>Edit</button></a>
-
-                    <a href="/delete">
-                        <button class="delete-btn" onclick="return confirm('Are you sure you want to delete your account?')">Delete Account</button>
+                    <a href="/customer/bookings/${booking.bookingId}/cancel">
+                        <button class="delete-btn" onclick="return confirm('Are you sure you want to cancel this booking?')">Cancel Booking</button>
                     </a>
-
                 </div>
+
+
             </div>
         </div>
     </div>
+
 </body>
 
 <footer>
