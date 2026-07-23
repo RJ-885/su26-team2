@@ -17,8 +17,8 @@
 1. Customer (the user with the customer role):
     1. Create/modify customer profile - The app will allow users to choose the role of customer and create a user profile.
     2. View available services - The app will have a catalog of contractor profiles for the customer to browse and filter through to find the perfect hire.
-    3. Subscribe to available services - The app will allow users to contact contractors to hire them. If the contractor takes the job, the user will be able to communicate with the contractor.
-    4. Write reviews for subscribed services - Under a contractors profile, if the customer has hired them, the app will allow them to write reviews and rate the contractors services.
+    3. Subscribe to available services - The app will allow users to set up a time and location to recieve a specified service.
+    4. Remove services that are unwanted - The app will allow users to remove subscriptions from their profile.
 2. Provider (the user with the provider role):
     1. Create/modify/remove provider profile - Register as a contractor and showcase certifications, experience, specialties, service areas, or completed projects.
     2. Create services - Publish home repair and improvement services, pricing estimates, project details, and availability.

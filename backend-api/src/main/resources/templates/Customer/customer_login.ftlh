@@ -12,9 +12,10 @@
 
     <nav>
         <ul class="main-nav">
-            <a href="/customer_profile">Profile</a>
-            <a href="/customer_login">Login</a>
-            <a href="/sign_up">Sign Up</a>
+            <a href="/customer/bookings">Bookings</a>
+            <a href="/customer/profile">Profile</a>
+            <a href="/cutomer/customer_login">Login</a>
+            <a href="/customer/sign_up">Sign Up</a>
         </ul>
 
         <header>
@@ -25,7 +26,7 @@
     <div class="container">
         <div class="login-form">
             <h3>Login</h3>
-            <form class="form" action="/customer_login" method="POST">
+            <form class="form" action="/customer/customer_login" method="POST">
                 <div class="enter-name">
                     <label for="email">Email:</label>
                     <input type="text" id="email" name="email" required>
