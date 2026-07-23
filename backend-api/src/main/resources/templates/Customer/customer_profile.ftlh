@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="column-image">
-                    <img src="default.jpg" alt="Profile Image" />
+                    <img src="/default.jpg" alt="Profile Image" />
                 </div>
                 <div class="column-description">
                     <h3>

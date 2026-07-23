@@ -23,23 +23,27 @@
     </nav>
 
     <div class="cards">
-            <a href="/customer/booking-details">
+        <#list bookings as booking>
+            <a href="/customer/bookings/${booking.bookingId?c}">
                 <article class="card">
                     <header>
-                        <h2>{booking.location}</h2>
+                        <h4>${booking.location}</h4>
                     </header>
+
+                    <img src="/house.jpg" alt="House Image">
 
                     <div class="content">
                         <p>
-                            {booking.notes}
+                            ${booking.notes}
                         </p>
                     </div>
 
                     <footer>
-                        {booking.homeService}
+                        
                     </footer>
                 </article>
             </a>
+        </#list>
     </div>
 </body>
 

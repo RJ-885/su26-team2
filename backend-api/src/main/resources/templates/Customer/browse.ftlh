@@ -49,7 +49,7 @@
                         <h2>${provider.firstName} ${provider.lastName}</h2>
                     </header>
 
-                    <img src="/default.jpg" alt="Profile Image" />
+                    <img src="/tradesman.jpg" alt="Profile Image" />
 
                     <div class="content">
                         <p>

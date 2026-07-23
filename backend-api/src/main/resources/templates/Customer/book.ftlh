@@ -12,7 +12,8 @@
 
     <nav>
         <ul class="main-nav">
-            <a href="/customer/customer_profile">Profile</a>
+            <a href="/customer/bookings">Bookings</a>
+            <a href="/customer/profile">Profile</a>
             <a href="/customer/customer_login">Login</a>
             <a href="/customer/sign_up">Sign Up</a>
         </ul>

@@ -148,7 +148,7 @@ public class homefix_NowUiController {
 
         customerService.deleteCustomer(customerId);
         session.invalidate();
-        return "redirect:/";
+        return "redirect:/customer/browse";
     }
 
     @GetMapping("providers/search/{specialty}")
@@ -224,9 +224,17 @@ public class homefix_NowUiController {
         return "Customer/my-bookings";
     }
 
-    @PostMapping("/bookings/{bookingId}/cancel")
+    @GetMapping("/bookings/{bookingId}")
+    public String getBookingById(@PathVariable Long bookingId, Model  model) {
+        model.addAttribute("booking", bookingService.getBookingById(bookingId));
+
+        return "Customer/booking-details";
+    }
+
+    @GetMapping("/bookings/{bookingId}/cancel")
     public String cancelBooking(@PathVariable Long bookingId) {
         bookingService.cancelBooking(bookingId);
+        bookingService.deleteBooking(bookingId);
         return "redirect:/customer/bookings";
     }
 }

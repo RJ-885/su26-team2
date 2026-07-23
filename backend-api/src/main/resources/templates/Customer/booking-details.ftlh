@@ -11,14 +11,15 @@
 <body>
 
     <nav>
-        <ul class="main-nav">
-            <a href="/customer_profile">Profile</a>
-            <a href="/customer_login">Login</a>
-            <a href="/sign_up">Sign Up</a>
+         <ul class="main-nav">
+            <a href="/customer/bookings">Bookings</a>
+            <a href="/customer/profile">Profile</a>
+            <a href="/customer/customer_login">Login</a>
+            <a href="/customer/sign_up">Sign Up</a>
         </ul>
 
         <header>
-            <a href="/browse">HomeFix Now</a>
+            <a href="/customer/browse">HomeFix Now</a>
         </header>
     </nav>
 
@@ -31,13 +32,11 @@
                     </h2>
                 </div>
 
-                <div class="column-image">
-                    <img src="home.jpg" alt="Profile Image" />
-                </div>
+                <img src="/house.jpg" alt="House Image">
 
                 <div class="column-description">
                     <h3>
-                        Notes
+                        ${booking.notes}
                     </h3>
 
                     <#if booking.notes??>
@@ -70,9 +69,8 @@
                             </h4>
                     </#if>
 
-                    <a href="my-bookings.html">
-                    <button class="cancel-booking-btn"
-                        onclick="return confirm('Are you sure you want to cancel this booking?')">Cancel Booking</button>
+                    <a href="/customer/bookings/${booking.bookingId}/cancel">
+                        <button class="delete-btn" onclick="return confirm('Are you sure you want to cancel this booking?')">Cancel Booking</button>
                     </a>
                 </div>
 
