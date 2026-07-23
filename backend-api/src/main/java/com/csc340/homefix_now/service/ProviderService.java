@@ -31,8 +31,9 @@ public class ProviderService {
                 .orElseThrow(() -> new RuntimeException("Provider not found."));
     }
 
-    public List<Provider> getProviderBySpecialty(String specialty) {
+    public List<Provider> findBySpecialty(String specialty) {
         return providerRepository.findBySpecialty(specialty);
+
     }
 
     /**
@@ -67,6 +68,10 @@ public class ProviderService {
      */
     public void deleteProvider(Long providerId) {
         providerRepository.deleteById(providerId);
+    }
+
+    public Provider findByEmail(String email) {
+        return providerRepository.findByEmail(email);
     }
 
 }

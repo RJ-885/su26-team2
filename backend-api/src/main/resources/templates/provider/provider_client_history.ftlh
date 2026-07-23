@@ -11,130 +11,108 @@
 
 <body>
 
-    <nav>
+<nav>
+    <ul class="main-nav">
+        <li><a href="/provider/profile">Profile</a></li>
+        <li><a href="/provider/history">History</a></li>
+        <li><a href="/provider/logout">Logout</a></li>
+    </ul>
 
-        <ul class="main-nav">
-            <a href="/provider/provider_history">History</a>
-            <a href="/provider_profile">Profile</a>
-            <a href="/browse">Logout</a>
-        </ul>
+    <header>
+        <a href="/customer/browse">HomeFix Now</a>
+    </header>
+</nav>
 
-        <header>
-            <a href="/browse">HomeFix Now</a>
-        </header>
+<div class="profile-banner">
 
-    </nav>
+    <h1>Service History</h1>
 
-    <div class="profile-banner">
+    <p>
+        View your completed service requests and earnings.
+    </p>
 
-        <h1>Service History</h1>
+</div>
 
-        <p>
-            View your completed service requests and earnings.
-        </p>
+<div class="summary-card">
 
-    </div>
+    <h2>Performance Summary</h2>
 
-    <div class="summary-card">
+    <div class="summary-grid">
 
-        <h2>Performance Summary</h2>
+        <div>
+            <strong>Completed Jobs</strong>
+            <p>2</p>
+        </div>
 
-        <div class="summary-grid">
+        <div>
+            <strong>Total Earnings</strong>
+            <p>$305</p>
+        </div>
 
-            <div>
-                <strong>Completed Jobs</strong>
-                <p>34</p>
-            </div>
+        <div>
+            <strong>Average Rating</strong>
+            <p>4.9</p>
+        </div>
 
-            <div>
-                <strong>Total Earnings</strong>
-                <p>$5,420</p>
-            </div>
-
-            <div>
-                <strong>Average Rating</strong>
-                <p>4.9</p>
-            </div>
-
-            <div>
-                <strong>Response Rate</strong>
-                <p>98%</p>
-            </div>
-
+        <div>
+            <strong>Response Rate</strong>
+            <p>100%</p>
         </div>
 
     </div>
 
-    <div class="history-card">
+</div>
 
-        <h2>Completed Services</h2>
+<div class="history-card">
 
-        <table class="history-table">
+    <h2>Completed Services</h2>
 
-            <thead>
-                <tr>
-                    <th>Customer</th>
-                    <th>Location</th>
-                    <th>Service</th>
-                    <th>Price</th>
-                    <th>Client Feedback</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
+    <table class="history-table">
 
-            <tbody>
+        <thead>
+        <tr>
+            <th>Customer</th>
+            <th>Location</th>
+            <th>Service</th>
+            <th>Price</th>
+            <th>Client Feedback</th>
+            <th>Status</th>
+        </tr>
+        </thead>
 
-                <tr>
-                    <td>Sarah Johnson</td>
-                    <td>Greensboro, NC</td>
-                    <td>Electrical Repair</td>
-                    <td>$150</td>
-                    <td>"Quick response and excellent work!"</td>
-                    <td><span class="completed">Completed</span></td>
-                </tr>
+        <tbody>
 
-                <tr>
-                    <td>Michael Davis</td>
-                    <td>High Point, NC</td>
-                    <td>Ceiling Fan Installation</td>
-                    <td>$125</td>
-                    <td>"Very professional and arrived on time."</td>
-                    <td><span class="completed">Completed</span></td>
-                </tr>
+        <tr>
+            <td>John Smith</td>
+            <td>Greensboro, NC</td>
+            <td>Kitchen Faucet Repair</td>
+            <td>$125</td>
+            <td>Great work! Very professional.</td>
+            <td>
+                <span class="completed">
+                    Completed
+                </span>
+            </td>
+        </tr>
 
-                <tr>
-                    <td>Emily Brown</td>
-                    <td>Winston-Salem, NC</td>
-                    <td>Breaker Panel Upgrade</td>
-                    <td>$850</td>
-                    <td>"Explained everything clearly and cleaned up afterward."</td>
-                    <td><span class="completed">Completed</span></td>
-                </tr>
+        <tr>
+            <td>Sarah Johnson</td>
+            <td>High Point, NC</td>
+            <td>Ceiling Fan Installation</td>
+            <td>$180</td>
+            <td>Fast service and excellent quality.</td>
+            <td>
+                <span class="completed">
+                    Completed
+                </span>
+            </td>
+        </tr>
 
-                <tr>
-                    <td>James Wilson</td>
-                    <td>Greensboro, NC</td>
-                    <td>Lighting Installation</td>
-                    <td>$210</td>
-                    <td>"Would definitely hire again."</td>
-                    <td><span class="completed">Completed</span></td>
-                </tr>
+        </tbody>
 
-                <tr>
-                    <td>Olivia Moore</td>
-                    <td>Kernersville, NC</td>
-                    <td>Outlet Installation</td>
-                    <td>$95</td>
-                    <td>"Friendly service and fair pricing."</td>
-                    <td><span class="completed">Completed</span></td>
-                </tr>
+    </table>
 
-            </tbody>
-
-        </table>
-
-    </div>
-
+</div>
 
 </body>
 

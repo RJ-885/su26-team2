@@ -16,7 +16,7 @@ import com.csc340.homefix_now.service.BookingService;
 @RestController
 @RequestMapping("/api/bookings")
 public class BookingController {
-    
+
     private final BookingService bookingService;
 
     public BookingController(BookingService bookingService) {
@@ -39,5 +39,11 @@ public class BookingController {
     public ResponseEntity<List<Booking>> getBookingsByCustomer(@PathVariable Long customerId) {
         List<Booking> bookings = bookingService.getBookingsByCustomerId(customerId);
         return ResponseEntity.ok(bookings);
+    }
+
+    @GetMapping("/provider/{providerId}")
+    public ResponseEntity<List<Booking>> getBookingsByProvider(@PathVariable Long providerId) {
+        return ResponseEntity.ok(
+                bookingService.getBookingsByProviderId(providerId));
     }
 }

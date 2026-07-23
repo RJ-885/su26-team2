@@ -11,173 +11,54 @@
 
 <body>
 
-    <nav>
+<nav>
+    <ul class="main-nav">
+        <li><a href="/provider/profile">Profile</a></li>
+        <li><a href="/provider/history">History</a></li>
+        <li><a href="/provider/logout">Logout</a></li>
+    </ul>
 
-        <ul class="main-nav">
-            <a href="/provider_client_history">History</a>
-            <a href="/provider_profile">Profile</a>
-            <a href="/browse">Logout</a>
-        </ul>
+    <header>
+        <a href="/customer/browse">HomeFix Now</a>
+    </header>
+</nav>
 
-        <header>
-            <a href="/providers">HomeFix Now</a>
-        </header>
+<div class="profile-banner">
 
-    </nav>
+    <div class="banner-text">
 
-    <div class="profile-banner">
+        <h1>My Provider Profile</h1>
 
-        <div class="banner-text">
-
-            <h1>My Provider Profile</h1>
-
-            <p>
-                Manage how customers see your profile.
-            </p>
-
-        </div>
-
-        <div class="profile-card">
-
-            <h2>Personal Information</h2>
-
-            <div class="info-grid">
-
-                <div class="info-item">
-                    <strong>First Name</strong>
-                    <p>${provider.firstName}</p>
-                </div>
-
-                <div class="info-item">
-                    <strong>Last Name</strong>
-                    <p>${provider.lastName}</p>
-                </div>
-
-                <div class="info-item">
-                    <strong>Email</strong>
-                    <p>${provider.email}</p>
-                </div>
-
-                <div class="info-item">
-                    <strong>Phone Number</strong>
-                    <p>${provider.phone}</p>
-                </div>
-
-            </div>
-
-
-
-        </div>
-
-        <div class="profile-card">
-
-            <h2>Professional Information</h2>
-
-            <div class="info-grid">
-
-                <div class="info-item">
-                    <strong>Service Category</strong>
-
-                    <span class="service-tag">
-                        ${provider.specialty}
-                    </span>
-                </div>
-
-                <div class="info-item">
-                    <strong>Years of Experience</strong>
-
-                    <p>8 Years</p>
-                </div>
-
-                <div class="info-item">
-                    <strong>Location</strong>
-
-                    <p>${provider.location}</p>
-                </div>
-
-                <div class="info-item">
-                    <strong>Starting Price</strong>
-
-                    <p>$85/hr</p>
-                </div>
-
-                <div class="info-item info-full">
-                    <strong>About Me</strong>
-
-                    <p>
-                        ${provider.bio}
-                    </p>
-                </div>
-
-            </div>
-
-
-
-        </div>
-
-        <div class="profile-card">
-
-            <h2>Pricing & Services</h2>
-
-            <div class="info-grid">
-
-                <div class="info-item">
-                    <strong>Starting Rate</strong>
-                    <p>$85 / Hour</p>
-                </div>
-
-                <div class="info-item">
-                    <strong>Free Estimates</strong>
-                    <p>Yes</p>
-                </div>
-
-                <div class="info-item">
-                    <strong>Insured</strong>
-                    <p>Yes</p>
-                </div>
-
-                <div class="info-item info-full">
-
-                    <strong>Services Offered</strong>
-
-                    <ul class="services-list">
-                        
-                    </ul>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
+        <p>
+            Manage how customers see your profile.
+        </p>
 
     </div>
 
     <div class="profile-card">
 
-        <h2>Availability</h2>
+        <h2>Personal Information</h2>
 
         <div class="info-grid">
 
             <div class="info-item">
-                <strong>Monday - Friday</strong>
-                <p>9:00 AM - 5:00 PM</p>
+                <strong>First Name</strong>
+                <p>${provider.firstName}</p>
             </div>
 
             <div class="info-item">
-                <strong>Saturday</strong>
-                <p>9:00 AM - 2:00 PM</p>
+                <strong>Last Name</strong>
+                <p>${provider.lastName}</p>
             </div>
 
             <div class="info-item">
-                <strong>Sunday</strong>
-                <p>Closed</p>
+                <strong>Email</strong>
+                <p>${provider.email}</p>
             </div>
 
             <div class="info-item">
-                <strong>Emergency Service</strong>
-                <p>Available 24/7</p>
+                <strong>Phone Number</strong>
+                <p>${provider.phone}</p>
             </div>
 
         </div>
@@ -186,14 +67,156 @@
 
     <div class="profile-card">
 
-        <h2>Account Settings</h2>
+        <h2>Professional Information</h2>
 
-        <button>Change Password</button>
+        <div class="info-grid">
 
+            <div class="info-item">
+                <strong>Business Name</strong>
+                <p>${provider.businessName}</p>
+            </div>
 
-        <button class="delete-btn">Delete Account</button>
+            <div class="info-item">
+                <strong>Service Category</strong>
+
+                <span class="service-tag">
+                    ${provider.specialty}
+                </span>
+            </div>
+
+            <div class="info-item">
+                <strong>Years of Experience</strong>
+                <p>${provider.yearsExperience}</p>
+            </div>
+
+            <div class="info-item">
+                <strong>Location</strong>
+                <p>${provider.location}</p>
+            </div>
+
+            <div class="info-item">
+                <strong>Starting Price</strong>
+                <p>$${provider.hourlyRate}/hr</p>
+            </div>
+
+            <div class="info-item info-full">
+                <strong>About Me</strong>
+
+                <p>
+                    ${provider.bio}
+                </p>
+            </div>
+
+        </div>
 
     </div>
+
+    <div class="profile-card">
+
+        <h2>Pricing & Services</h2>
+
+        <div class="info-grid">
+
+            <div class="info-item">
+                <strong>Starting Rate</strong>
+                <p>$${provider.hourlyRate} / Hour</p>
+            </div>
+
+            <div class="info-item">
+                <strong>Free Estimates</strong>
+
+                <p>
+                    <#if provider.freeEstimates?? && provider.freeEstimates>
+                        Yes
+                    <#else>
+                        No
+                    </#if>
+                </p>
+            </div>
+
+            <div class="info-item">
+                <strong>Insured</strong>
+
+                <p>
+                    <#if provider.insured?? && provider.insured>
+                        Yes
+                    <#else>
+                        No
+                    </#if>
+                </p>
+            </div>
+
+            <div class="info-item info-full">
+
+    <strong>Services Offered</strong>
+
+    <ul class="services-list">
+
+        <#if services?? && services?size gt 0>
+
+            <#list services as service>
+
+                <li>
+                    ${service.serviceName}
+                    <#if service.price??>
+                        - $${service.price}
+                    </#if>
+                </li>
+
+            </#list>
+
+        <#else>
+
+            <li>No services have been added yet.</li>
+
+        </#if>
+
+    </ul>
+
+    <br>
+
+    <a href="/provider/add_service">
+        <button type="button">
+            Add Service
+        </button>
+    </a>
+
+</div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="profile-card">
+
+    <h2>Availability</h2>
+
+    <div class="info-grid">
+
+        <div class="info-item">
+            <strong>Availability</strong>
+            <p>${provider.availability}</p>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="profile-card">
+
+    <h2>Account Settings</h2>
+
+    <button type="button">
+        Change Password
+    </button>
+
+    <button type="button" class="delete-btn">
+        Delete Account
+    </button>
+
+</div>
 
 </body>
 

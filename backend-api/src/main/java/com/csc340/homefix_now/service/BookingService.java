@@ -9,19 +9,24 @@ import com.csc340.homefix_now.repository.BookingRepository;
 
 @Service
 public class BookingService {
-    
+
     private final BookingRepository bookingRepository;
 
     public BookingService(BookingRepository bookingRepository) {
         this.bookingRepository = bookingRepository;
     }
-public List<Booking> getBookingsByCustomerId(Long customerId) {
-    return bookingRepository.findByCustomerCustomerId(customerId);
-}
 
-public List<Booking> getBookingsByHomeServiceId(Long homeServiceId) {
-    return bookingRepository.findByHomeServiceServiceId(homeServiceId);
-}
+    public List<Booking> getBookingsByCustomerId(Long customerId) {
+        return bookingRepository.findByCustomerCustomerId(customerId);
+    }
+
+    public List<Booking> getBookingsByHomeServiceId(Long homeServiceId) {
+        return bookingRepository.findByHomeServiceServiceId(homeServiceId);
+    }
+
+    public List<Booking> getBookingsByProviderId(Long providerId) {
+        return bookingRepository.findByProviderProviderId(providerId);
+    }
 
     public Booking createBooking(Booking booking) {
         return bookingRepository.save(booking);
@@ -41,7 +46,7 @@ public List<Booking> getBookingsByHomeServiceId(Long homeServiceId) {
             existingBooking.setCustomer(booking.getCustomer());
             existingBooking.setHomeService(booking.getHomeService());
             existingBooking.setLocation(booking.getLocation());
-            //existingBooking.setTimeslot(booking.getTimeslot());
+            // existingBooking.setTimeslot(booking.getTimeslot());
             existingBooking.setStatus(booking.getStatus());
         }
         return bookingRepository.save(booking);
