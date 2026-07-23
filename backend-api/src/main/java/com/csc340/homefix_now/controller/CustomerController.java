@@ -26,14 +26,11 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Customer> getCustomer(@PathVariable Long customerId) {
-        Customer customer = customerService.getCustomerById(customerId);
-        if (customer != null) {
-            return ResponseEntity.ok(customer);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return customerService.getCustomerById(customerId)
+        .map(ResponseEntity::ok)
+        .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/email/{email}")

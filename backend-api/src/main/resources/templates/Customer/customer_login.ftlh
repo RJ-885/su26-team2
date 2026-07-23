@@ -25,10 +25,10 @@
     <div class="container">
         <div class="login-form">
             <h3>Login</h3>
-            <form class="form" action="submit-profile.php" method="POST">
+            <form class="form" action="/customer_login" method="POST">
                 <div class="enter-name">
-                    <label for="name">Profile Name:</label>
-                    <input type="text" id="name" name="name" required>
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email" required>
                 </div>
 
                 <div class="enter-password">
@@ -40,7 +40,7 @@
                     <button type="submit">Login</button>
                 </div>
                 <div class="sign-up-button">
-                    <a href="/sign_up">Don't have an account? Sign Up</a>
+                    <a href="/sign_up">Don't have an account? Sign Up!</a>
                 </div>
             </form>
         </div>

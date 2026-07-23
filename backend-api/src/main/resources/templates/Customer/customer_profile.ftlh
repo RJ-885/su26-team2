@@ -73,9 +73,11 @@
 
                     <h2>Account Settings</h2>
 
-                    <a href="customer_profile/edit/${customerId}"><button>Edit</button></a>
+                    <a href="edit/$"><button>Edit</button></a>
 
-                    <a href="customer_profile/delete/${customerId}"><button class="delete-btn">Delete Account</button></a>
+                    <a href="/delete">
+                        <button class="delete-btn" onclick="return confirm('Are you sure you want to delete your account?')">Delete Account</button>
+                    </a>
 
                 </div>
             </div>
