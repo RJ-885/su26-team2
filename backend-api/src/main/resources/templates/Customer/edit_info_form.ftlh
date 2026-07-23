@@ -45,12 +45,12 @@
 
                 <div class="enter-name">
                     <label for="phone">Phone</label>
-                    <input type="text" id="phone" name="phone" value="${customer.phone}">
+                    <input type="text" id="phone" name="phone" value="${customer.phone!''}">
                 </div>
 
                 <div class="enter-name">
                     <label for="location">City</label>
-                    <input type="text" id="location" name="location" value="${customer.location}">
+                    <input type="text" id="location" name="location" value="${customer.location!''}">
                 </div>
 
                 <div class="login-button">

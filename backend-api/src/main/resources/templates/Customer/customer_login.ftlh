@@ -41,7 +41,7 @@
                     <button type="submit">Login</button>
                 </div>
                 <div class="sign-up-button">
-                    <a href="/sign_up">Don't have an account? Sign Up!</a>
+                    <a href="/customer/sign_up">Don't have an account? Sign Up!</a>
                 </div>
             </form>
         </div>

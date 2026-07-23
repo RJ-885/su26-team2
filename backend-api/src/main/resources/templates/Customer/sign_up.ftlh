@@ -25,7 +25,7 @@
     <div class="container">
         <div class="new-profile-form">
             <h3>Create a New Profile</h3>
-            <form action="/sign_up" method="post">
+            <form action="/customer/sign_up" method="post">
                 <div class="enter-name">
                     <label for="first_name">First Name:</label>
                     <input type="text" id="firstName" name="firstName" required>
@@ -47,13 +47,13 @@
                 </div>
 
                 <div class="create-button">
-                    <a href="/sign_up"><button type="submit">Create</button></a>
+                    <button type="submit">Create</button>
+                </div>
+
+                <div>
+                    <a href="provider/provider_sign_up">Sign us as a Provider</a>
                 </div>
             </form>
-        </div>
-
-        <div>
-            <a href="provider/provider_sign_up">Sign us as a Provider</a>
         </div>
     </div>
 </body>

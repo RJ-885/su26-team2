@@ -36,7 +36,7 @@
 
                 <div class="column-description">
                     <h3>
-                        ${booking.notes}
+                        Notes
                     </h3>
 
                     <#if booking.notes??>
@@ -54,20 +54,6 @@
                     <h4>
                         ${booking.status}
                     </h4>
-
-                    <h3>
-                        Provider
-                    </h3>
-
-                    <#if booking.provider??>
-                        <h4>
-                            ${booking.provider}
-                        </h4>
-                        <#else>
-                            <h4>
-
-                            </h4>
-                    </#if>
 
                     <a href="/customer/bookings/${booking.bookingId}/cancel">
                         <button class="delete-btn" onclick="return confirm('Are you sure you want to cancel this booking?')">Cancel Booking</button>

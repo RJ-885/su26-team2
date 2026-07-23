@@ -80,6 +80,8 @@
                         <button class="delete-btn" onclick="return confirm('Are you sure you want to delete your account?')">Delete Account</button>
                     </a>
 
+                    <a href="/customer/logout" onclick="return confirm('Logout?')">Logout</a>
+
                 </div>
             </div>
         </div>
