@@ -4,15 +4,20 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.csc340.homefix_now.entity.Booking;
+import com.csc340.homefix_now.entity.Customer;
+import com.csc340.homefix_now.entity.HomeService;
+import com.csc340.homefix_now.entity.Provider;
+import com.csc340.homefix_now.entity.Timeslot;
 import com.csc340.homefix_now.service.BookingService;
 import com.csc340.homefix_now.service.CustomerService;
 import com.csc340.homefix_now.service.ProviderService;
@@ -22,13 +27,6 @@ import com.csc340.homefix_now.service.ServiceService;
 import com.csc340.homefix_now.service.TimeslotService;
 
 import jakarta.servlet.http.HttpSession;
-
-import com.csc340.homefix_now.entity.Provider;
-import com.csc340.homefix_now.entity.Customer;
-import com.csc340.homefix_now.entity.Booking;
-import com.csc340.homefix_now.entity.Review;
-import com.csc340.homefix_now.entity.Timeslot;
-import com.csc340.homefix_now.entity.HomeService;
 
 @Controller
 @RequestMapping("/customer")
@@ -42,9 +40,15 @@ public class homefix_NowUiController {
     private final ServiceService serviceService;
     private final TimeslotService timeslotService;
 
-    public homefix_NowUiController(BookingService bookingService, CustomerService customerService,
-            ProviderService providerService, ReplyService replyService,
-            ReviewService reviewService, ServiceService serviceService, TimeslotService timeslotService) {
+    public homefix_NowUiController(
+            BookingService bookingService,
+            CustomerService customerService,
+            ProviderService providerService,
+            ReplyService replyService,
+            ReviewService reviewService,
+            ServiceService serviceService,
+            TimeslotService timeslotService) {
+
         this.bookingService = bookingService;
         this.customerService = customerService;
         this.providerService = providerService;
@@ -54,32 +58,59 @@ public class homefix_NowUiController {
         this.timeslotService = timeslotService;
     }
 
+    // =========================
+    // CUSTOMER SIGN UP
+    // =========================
+
     @GetMapping("/sign_up")
     public String createCustomerForm(Model model) {
         model.addAttribute("customer", new Customer());
+
+        // Make sure templates/Customer/sign_up.ftlh exists
         return "Customer/sign_up";
     }
 
     @PostMapping("/sign_up")
-    public String createCustomer(Customer customer, HttpSession session) {
+    public String createCustomer(@ModelAttribute Customer customer,
+            HttpSession session) {
+
         customer.setAccountStatus("active");
+
         Customer createdCustomer = customerService.createCustomer(customer);
-        session.setAttribute("customerId", createdCustomer.getCustomerId());
+
+        session.setAttribute(
+                "customerId",
+                createdCustomer.getCustomerId());
+
         return "redirect:/customer/profile";
     }
 
+    // =========================
+    // LOGIN / LOGOUT
+    // =========================
+
     @GetMapping("/customer_login")
-    public String customer_login() {
+    public String customerLogin() {
         return "Customer/customer_login";
     }
 
     @PostMapping("/customer_login")
-    public String login(HttpSession session, String email, String password) {
+    public String login(HttpSession session,
+            @RequestParam String email,
+            @RequestParam String password) {
+
         Customer customer = customerService.findByEmail(email);
-        if (customer != null && password.equals(customer.getPassword())) {
-            session.setAttribute("customerId", customer.getCustomerId());
+
+        if (customer != null &&
+                password.equals(customer.getPassword())) {
+
+            session.setAttribute(
+                    "customerId",
+                    customer.getCustomerId());
+
             return "redirect:/customer/browse";
         }
+
         return "redirect:/customer/customer_login";
     }
 
@@ -89,32 +120,50 @@ public class homefix_NowUiController {
         return "redirect:/customer/customer_login";
     }
 
+    // =========================
+    // PROFILE
+    // =========================
+
     @GetMapping("/profile")
-    public String customer_profile(HttpSession session, Model model) {
+    public String customerProfile(HttpSession session,
+            Model model) {
+
         Long customerId = (Long) session.getAttribute("customerId");
+
         if (customerId == null) {
             return "redirect:/customer/customer_login";
         }
 
-        customerService.getCustomerById(customerId).ifPresent(customer -> model.addAttribute("customer", customer));
+        customerService.getCustomerById(customerId)
+                .ifPresent(customer -> model.addAttribute("customer", customer));
+
         return "Customer/customer_profile";
     }
 
     @GetMapping("/profile/edit")
-    public String editCustomerProfileForm(HttpSession session, Model model) {
+    public String editCustomerProfileForm(HttpSession session,
+            Model model) {
+
         Long customerId = (Long) session.getAttribute("customerId");
+
         if (customerId == null) {
             return "redirect:/customer/customer_login";
         }
 
         model.addAttribute("section", "personal");
-        customerService.getCustomerById(customerId).ifPresent(customer -> model.addAttribute("customer", customer));
-        return "Customer/edit_info_form";
+
+        customerService.getCustomerById(customerId)
+                .ifPresent(customer -> model.addAttribute("customer", customer));
+
+        return "Customer/edit-details";
     }
 
     @PostMapping("/profile/edit")
-    public String editCustomerProfile(@ModelAttribute Customer customer, HttpSession session) {
+    public String editCustomerProfile(@ModelAttribute Customer customer,
+            HttpSession session) {
+
         Long customerId = (Long) session.getAttribute("customerId");
+
         if (customerId == null) {
             return "redirect:/customer/customer_login";
         }
@@ -128,36 +177,54 @@ public class homefix_NowUiController {
         model.addAttribute("provider", providerService.getProvider(providerId));
         model.addAttribute("services", serviceService.getServicesByProvider(providerId));
 
-        return "Customer/customer_view_provider_profile";
+        return "redirect:/customer/profile";
     }
+
+    // =========================
+    // PROVIDERS
+    // =========================
 
     @GetMapping("/browse")
     public String getAllProviders(Model model) {
-        model.addAttribute("providersList", providerService.getAllProviders());
-        model.addAttribute("pageTitle", "All Providers");
+
+        model.addAttribute(
+                "providersList",
+                providerService.getAllProviders());
+
+        model.addAttribute(
+                "pageTitle",
+                "All Providers");
 
         return "Customer/browse";
     }
 
-    @GetMapping("/delete")
-    public String deleteCustomer(HttpSession session) {
-        Long customerId = (Long) session.getAttribute("customerId");
-        if (customerId == null) {
-            return "redirect:/customer/customer_login";
-        }
+    @GetMapping("/providers/search/{specialty}")
+    public String searchProviders(@PathVariable String specialty,
+            Model model) {
 
         customerService.deleteCustomer(customerId);
         session.invalidate();
         return "redirect:/customer/browse";
     }
 
-    @GetMapping("providers/search/{specialty}")
-    public String searchProviders(@PathVariable String specialty, Model model) {
-        model.addAttribute("providersList", providerService.getProviderBySpecialty(specialty));
-        model.addAttribute("pageTitle", "Search Results for: " + specialty);
+    @GetMapping("/providers/{providerId}")
+    public String getProviderById(@PathVariable Long providerId,
+            Model model) {
 
-        return "Customer/browse";
+        model.addAttribute(
+                "provider",
+                providerService.getProvider(providerId));
+
+        model.addAttribute(
+                "services",
+                serviceService.getServicesByProvider(providerId));
+
+        return "Customer/customer_view_provider_profile";
     }
+
+    // =========================
+    // BOOKINGS
+    // =========================
 
     @GetMapping("/providers/{providerId}/book")
     public String makeBookingPage(@PathVariable Long providerId, Model model, HttpSession session) {
@@ -167,11 +234,14 @@ public class homefix_NowUiController {
         }
 
         Provider provider = providerService.getProvider(providerId);
+
         if (provider == null) {
             return "redirect:/customer/browse";
         }
 
-        List<Timeslot> timeslots = timeslotService.getAvailableTimeslotsByProviderId(providerId);
+        List<Timeslot> timeslots = timeslotService
+                .getAvailableTimeslotsByProviderId(providerId);
+
         model.addAttribute("provider", provider);
         model.addAttribute("timeslots", timeslots);
         model.addAttribute("home_services", serviceService.getServicesByProvider(providerId));

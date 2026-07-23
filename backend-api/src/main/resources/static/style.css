@@ -682,3 +682,52 @@ textarea:focus {
     font-weight: bold;
     color: #222;
 }
+
+/* ---------- Login Form ---------- */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+form input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+form input:focus {
+    outline: none;
+    border-color: #1b75d0;
+    box-shadow: 0 0 5px rgba(27,117,208,.25);
+}
+
+form button {
+    width: 100%;
+    padding: 14px;
+    background: #1b75d0;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background .2s;
+}
+
+form button:hover {
+    background: #155fa8;
+}
+
+.profile-card h1 {
+    text-align: center;
+}
+
+.profile-card p {
+    text-align: center;
+}
