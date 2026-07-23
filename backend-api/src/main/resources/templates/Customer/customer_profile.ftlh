@@ -12,13 +12,14 @@
 
     <nav>
         <ul class="main-nav">
-            <a href="/customer_profile">Profile</a>
-            <a href="/customer_login">Login</a>
-            <a href="/sign_up">Sign Up</a>
+            <a href="/customer/bookings">Bookings</a>
+            <a href="/customer/profile">Profile</a>
+            <a href="/customer/customer_login">Login</a>
+            <a href="/customer/sign_up">Sign Up</a>
         </ul>
 
         <header>
-            <a href="/providers">HomeFix Now</a>
+            <a href="/customer/browse">HomeFix Now</a>
         </header>
     </nav>
 
@@ -73,7 +74,7 @@
 
                     <h2>Account Settings</h2>
 
-                    <a href="edit/$"><button>Edit</button></a>
+                    <a href="/customer/profile/edit"><button>Edit</button></a>
 
                     <a href="/delete">
                         <button class="delete-btn" onclick="return confirm('Are you sure you want to delete your account?')">Delete Account</button>

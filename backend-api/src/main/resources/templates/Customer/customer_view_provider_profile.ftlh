@@ -22,7 +22,7 @@
         </header>
     </nav>
 
-    <h2><button class="hire-button">Hire This Provider</button></h2>
+    <h2><a href="/customer/providers/${provider.providerId}/book"><button class="hire-button">Hire This Provider</button></a></h2>
 
     <div class="profile-banner">
 

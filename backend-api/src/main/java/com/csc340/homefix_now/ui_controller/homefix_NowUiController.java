@@ -54,11 +54,10 @@ public class homefix_NowUiController {
         this.timeslotService = timeslotService;
     }
 
-
     @GetMapping("/sign_up")
     public String createCustomerForm(Model model) {
         model.addAttribute("customer", new Customer());
-        return "sign_up";
+        return "Customer/sign_up";
     }
 
     @PostMapping("/sign_up")
@@ -93,7 +92,7 @@ public class homefix_NowUiController {
     @GetMapping("/profile")
     public String customer_profile(HttpSession session, Model model) {
         Long customerId = (Long) session.getAttribute("customerId");
-        if (customerId ==  null) {
+        if (customerId == null) {
             return "redirect:/customer/customer_login";
         }
 
@@ -110,18 +109,18 @@ public class homefix_NowUiController {
 
         model.addAttribute("section", "personal");
         customerService.getCustomerById(customerId).ifPresent(customer -> model.addAttribute("customer", customer));
-        return "Customer/edit-details";
+        return "Customer/edit_info_form";
     }
 
     @PostMapping("/profile/edit")
     public String editCustomerProfile(@ModelAttribute Customer customer, HttpSession session) {
         Long customerId = (Long) session.getAttribute("customerId");
         if (customerId == null) {
-            return "redirect:/customer_login";
+            return "redirect:/customer/customer_login";
         }
 
         customerService.updateCustomer(customerId, customer);
-        return "redirect:/customer/customer_profile";
+        return "redirect:/customer/profile";
     }
 
     @GetMapping("/providers/{providerId}")
@@ -152,13 +151,6 @@ public class homefix_NowUiController {
         return "redirect:/";
     }
 
-    @PostMapping("/edit")
-    public String updatePost(@PathVariable Long customerId, Customer updatedCustomer, MultipartFile thumbnailFile) {
-        customerService.updateCustomer(customerId, updatedCustomer);
-
-        return "redirect:/customer_profile/" + customerId;
-    }
-
     @GetMapping("providers/search/{specialty}")
     public String searchProviders(@PathVariable String specialty, Model model) {
         model.addAttribute("providersList", providerService.getProviderBySpecialty(specialty));
@@ -168,73 +160,73 @@ public class homefix_NowUiController {
     }
 
     @GetMapping("/providers/{providerId}/book")
-    public String makeBookingPage(@PathVariable Long providerId, Model model, HttpSession booking) {
-        Long customerId = (Long) booking.getAttribute("customerId");
+    public String makeBookingPage(@PathVariable Long providerId, Model model, HttpSession session) {
+        Long customerId = (Long) session.getAttribute("customerId");
         if (customerId == null) {
-            return "redirect: /customer_login";
+            return "redirect:/customer/customer_login";
         }
 
         Provider provider = providerService.getProvider(providerId);
         if (provider == null) {
-            return "redirect:/providers";
+            return "redirect:/customer/browse";
         }
 
         List<Timeslot> timeslots = timeslotService.getAvailableTimeslotsByProviderId(providerId);
         model.addAttribute("provider", provider);
         model.addAttribute("timeslots", timeslots);
-        model.addAttribute("services", serviceService.getServicesByProvider(providerId));
-        return "Customer/make-booking";
+        model.addAttribute("home_services", serviceService.getServicesByProvider(providerId));
+        return "Customer/book";
     }
 
     @PostMapping("/bookings/book")
     public String makeBooking(@RequestParam Long providerId, @RequestParam Long serviceId,
-        @RequestParam Long timesotId, @RequestParam String notes, HttpSession session) {
-            Long customerId = (Long) session.getAttribute("customerId");
-            if (customerId == null) {
-                return "redirect:/customer/customer_login";
-            }
-
-            Optional<Customer> customer = customerService.getCustomerById(customerId);
-            Provider provider = providerService.getProvider(providerId);
-            Timeslot timeslot = timeslotService.getTimeslotById(customerId);
-            if (customer.isEmpty() || provider == null || timeslot == null || !Boolean.TRUE.equals(timeslot.getIsAvailable())) {
-                return "redirect:/customer/providers/" + providerId + "/book";
-            }
-
-            HomeService selectedService = serviceService.getService(serviceId);
-            if (selectedService == null || !providerId.equals(selectedService.getProvider().getProviderId())) {
-                return "redirect:/customer/providers/" + providerId + "/book";
-            }
-
-            Booking newBooking = new Booking();
-            newBooking.setCustomer(customer.get());
-            newBooking.setHomeService(selectedService);
-            newBooking.setTimeslot(timeslot);
-            newBooking.setStatus("Scheduled");
-            newBooking.setLocation("To Be Determined");
-            newBooking.setNotes(notes);
-            bookingService.createBooking(newBooking);
-            timeslotService.assignTimeslotToSession(timesotId);
-
-            return "redirect:/customer/bookings";
+            @RequestParam Long id, @RequestParam String notes, HttpSession session) {
+        Long customerId = (Long) session.getAttribute("customerId");
+        if (customerId == null) {
+            return "redirect:/customer/customer_login";
         }
 
-        @GetMapping("/bookings") 
-        public String bookingManagement(HttpSession session, Model model) {
-            Long customerId = (Long) session.getAttribute("customerId");
-            if (customerId == null) {
-                return "redirect:/customer/customer_login";
-            }
-
-            model.addAttribute("bookings", bookingService.getBookingsByCustomerId(customerId));
-
-            return "Customer/my-bookings";
+        Optional<Customer> customer = customerService.getCustomerById(customerId);
+        Provider provider = providerService.getProvider(providerId);
+        Timeslot timeslot = timeslotService.getTimeslotById(id);
+        if (customer.isEmpty() || provider == null || timeslot == null
+                || !Boolean.TRUE.equals(timeslot.getIsAvailable())) {
+            return "redirect:/customer/providers/" + providerId + "/book";
         }
 
-        @PostMapping("/bookings/{bookingId}/cancel")
-        public String cancelBooking(@PathVariable Long bookingId) {
-            bookingService.cancelBooking(bookingId);
-            return "redirect:/customer/bookings";
+        HomeService selectedService = serviceService.getService(serviceId);
+        if (selectedService == null || !providerId.equals(selectedService.getProvider().getProviderId())) {
+            return "redirect:/customer/providers/" + providerId + "/book";
         }
-    
+
+        Booking newBooking = new Booking();
+        newBooking.setCustomer(customer.get());
+        newBooking.setHomeService(selectedService);
+        newBooking.setTimeslot(timeslot);
+        newBooking.setStatus("Scheduled");
+        newBooking.setLocation("To Be Determined");
+        newBooking.setNotes(notes);
+        bookingService.createBooking(newBooking);
+        timeslotService.assignTimeslotToSession(id);
+
+        return "redirect:/customer/bookings";
+    }
+
+    @GetMapping("/bookings")
+    public String bookingManagement(HttpSession session, Model model) {
+        Long customerId = (Long) session.getAttribute("customerId");
+        if (customerId == null) {
+            return "redirect:/customer/customer_login";
+        }
+
+        model.addAttribute("bookings", bookingService.getBookingsByCustomerId(customerId));
+
+        return "Customer/my-bookings";
+    }
+
+    @PostMapping("/bookings/{bookingId}/cancel")
+    public String cancelBooking(@PathVariable Long bookingId) {
+        bookingService.cancelBooking(bookingId);
+        return "redirect:/customer/bookings";
+    }
 }
